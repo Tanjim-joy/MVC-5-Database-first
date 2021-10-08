@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Ev_Exam.Models.@class>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container mb-2">
+    <div class="row mb-2">
+        <div class="col">
+            <div class="display-6">Subjects Lists:</div>
+            <div class="d-flex justify-content-end mb-1">
+                <a href="@Url.Action("Create", "Classes")"><i class="fa fa-plus-square-o btn btn-outline-success "></i></a>
+
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr class="text-center">
+                        <th>@Html.DisplayNameFor(b => b.Subject_Name)</th>
+                        
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var br in Model)
+                    {
+                        <tr class="text-center">
+                            <td>@Html.DisplayFor(b => br.Subject_Name)</td>
+                            
+                            <td class="text-center"><a href="@Url.Action("Edit", "Class", new { ID =br.ClassId})"><i class="fa fa-pencil-square-o btn btn-outline-success"></i></a></td>
+                            <td class="text-center"><a href="@Url.Action("Delete", "Class", new { ID =br.ClassId})"><i class="fa fa-trash-o btn btn-outline-danger"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section styles {
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
+}
+

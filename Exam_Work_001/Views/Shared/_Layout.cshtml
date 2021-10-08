@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Md.Tangimul Haque</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+    @RenderSection("styles", false)
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-success navbar-expand-md fixed-top border-bottom mb-1">
+        <div class="container-fluid">
+            <span class="navbar-brand ms-5">Exam</span>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav Ac m-lg-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Subjects", "Index", "Subjects", new { }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Teachers", "Index", "Teachers", new { }, new { @class = "nav-link" })
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="min-height:calc(105vh - 140px)">
+        @RenderBody()
+    </div>
+    <footer class="container">
+        &copy;@DateTime.Now.Year - Crate By Tanjim
+    </footer>
+    @RenderSection("scripts", false)
+</body>
+</html>

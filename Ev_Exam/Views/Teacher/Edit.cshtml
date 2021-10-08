@@ -1,0 +1,74 @@
+﻿@model Ev_Exam.ViewModel.TeacherViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(e => e.TeacherId)
+    <h4>Edit Teacher:</h4>
+    <div class="form-group row mb-2">
+        @Html.LabelFor(e => e.Teacher_Name, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.TextBoxFor(e => e.Teacher_Name, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(e => e.Teacher_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-2">
+        @Html.LabelFor(e => e.Faculty, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.EnumDropDownListFor(e => e.Faculty, "Select Department", new { @class = "form-select form-select-sm" })
+            @Html.ValidationMessageFor(e => e.Faculty, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-2">
+        @Html.LabelFor(e => e.ClassStartDate, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.TextBoxFor(e => e.ClassStartDate, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(e => e.ClassStartDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-2">
+        @Html.LabelFor(e => e.ClassId, new { @class = "col-form-label col-form-label-sm text-end col-2" })
+        <div class="col-5">
+            @Html.DropDownListFor(e => e.ClassId, new SelectList(ViewBag.Branches, "BranchID", "BranchName"), "Select Branch", new { @class = "form-select form-select-sm" })
+            @Html.ValidationMessageFor(e => e.ClassId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-2">
+        @Html.LabelFor(e => e.Picture, new { @class = "col-form-label col-form-label-sm text-end col-2" })
+        <div class="col-5">
+            @Html.TextBoxFor(e => e.Picture, new { @class = "form-control form-control-sm", type = "file" })
+            @Html.ValidationMessageFor(e => e.Picture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+
+        <div class="col-10 offset-2">
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col">
+        <a href="@Url.Action("index", "Teacher")"><i class="fa fa-backward"></i>Back to Index</a>
+    </div>
+</div>
+
+@section styles {
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
+}
+@section scripts {
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $("#EmployeeJoinDate").datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    </script>
+}
+

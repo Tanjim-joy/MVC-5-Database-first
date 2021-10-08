@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Exam_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Course_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="Total_Houre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeachersId" Type="int" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="TeachersId" />
+    </Key>
+    <Property Name="TeachersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Teacher_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Faculty" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Classes__Teacher__25869641">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeachersId" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="TeachersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Exam_TestModelStoreContainer">
+    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Classes__Teacher__25869641" Association="Self.FK__Classes__Teacher__25869641">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

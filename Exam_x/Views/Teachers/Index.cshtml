@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Exam_x.Models.Teacher>
+@{
+    ViewBag.Title = "Teachers-Index";
+}
+
+<div class="container mb-2">
+    <div class="row mb-2">
+        <div class="col">
+            <div class="display-6">Employee Lists:</div>
+            <div class="d-flex justify-content-end mb-1">
+                <a href="@Url.Action("Create", "Teacher")"><i class="fa fa-plus-square-o btn btn-outline-success "></i></a>
+                
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr class="text-center">
+                        <th>Image</th>
+                        <th>@Html.DisplayNameFor(t => t.Teacher_Name)</th>
+                        <th>@Html.DisplayNameFor(t => t.Faculty)</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var em in Model)
+                    {
+                        <tr>
+                            <td><img src="~/Images/@em.Picture" width="50" class="img-thumbnail rounded-circle" /></td>
+                            <td>@Html.DisplayFor(t => em.Teacher_Name)</td>
+                            <td>@Html.DisplayFor(t => em.Faculty)</td>
+                            <td class="text-center"><a href="@Url.Action("Edit", "Teacher", new { ID =em.TeachersId })"><i class="fa fa-pencil-square-o btn btn-outline-success"></i></a></td>
+                            <td class="text-center"><a href="@Url.Action("Delete", "Teacher", new { ID =em.TeachersId })"><i class="fa fa-trash-o btn btn-outline-danger"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section styles {
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
+}
+
