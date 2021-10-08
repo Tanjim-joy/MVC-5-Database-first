@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Evidance_001.Models.Vehicle>
+
+
+
+<div class="row">
+    <div class="col">
+        <div class="display-5">Vehicles List</div>
+        <div class="d-flex justify-content-end mb-1">
+            <a href="@Url.Action("Create", "Vehicles")" class="btn btn-outline-primary">Create New</a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.VehicleId)</th>
+                    <th>@Html.DisplayNameFor(x => x.VehicleTypes)</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => b.VehicleId) </td>
+                        <td>@Html.DisplayFor(x => b.VehicleTypes) </td>
+                        <td style="width:150px;" class="text-center">
+
+                            <a title="Edit this item" href="@Url.Action("Edit", "Vehicles", new { id=b.VehicleId})" class="btn btn-outline-primary btn-sm ">Edit</a>
+                            <a title="Delete this item" href="@Url.Action("Delete", "Vehicles", new { id=b.VehicleId})" class="btn btn-outline-danger btn-sm ">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model Evidance_001.Models.Vehicle
+@{
+    ViewBag.Title = "Delete";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.VehicleId)
+    <h4>Are you sure to delete?</h4>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.VehicleId, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.DisplayFor(x => x.VehicleId)
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.VehicleTypes, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.DisplayFor(x => x.VehicleTypes)
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+
+        <div class="col-10 offset-2">
+            <button type="submit" class="btn btn-danger">Delete confim</button>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col">
+        @Html.ActionLink("Back to list", "Index")
+    </div>
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+}
